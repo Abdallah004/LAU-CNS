@@ -1,0 +1,161 @@
+
+
+body,html {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+.top-design-imgs {
+    position: relative;
+    background-color: #141223;
+    height: 8vh;
+    width: 100%; 
+    color: #29364e;
+    overflow: hidden;
+  }
+  
+  .top-design-imgs i {
+    position: absolute;
+  }
+  
+  
+  .top-design-imgs i:nth-child(1) {
+    top: 5%;
+    left: 10%;
+  }
+  
+  .top-design-imgs i:nth-child(2) {
+    top: 10%;
+    left: 50%;
+  }
+  
+  .top-design-imgs i:nth-child(3) {
+    top: 20%;
+    left: 80%;
+  }
+  
+  .top-design-imgs i:nth-child(4) {
+    top: 12%;
+    left: 30%;
+  }
+  
+  .top-design-imgs i:nth-child(5) {
+    top: 14%;
+    left: 63%;
+  }
+
+  
+  .top-design-imgs i:nth-child(odd) {
+    font-size: 4rem;
+    transform: rotate(-15deg);
+  }
+  
+  .top-design-imgs i:nth-child(even) {
+    font-size: 3rem;
+    transform: rotate(20deg);
+  }
+  
+
+
+  #back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 2rem;
+    margin: .7rem;
+  }
+  
+  #back:visited{
+    color: white;
+  }
+
+
+
+
+  .faq-container, .contact-container{
+    background-color: #3b465c;
+    color: white;
+    width: 30rem;
+    padding: 1rem;
+    text-align: left;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .contact-container{
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .faq-container, .contact-container h3{
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .faq-container, .contact-container{
+        width: 19rem;
+    }
+  }
+
+
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #2a364e;
+  padding: 2rem;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.star {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.star.filled {
+  color: #ffd700;
+}
+
+textarea {
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: block;
+  width: 80%;
+  height: 40vh;
+  border: 2px solid #2e3b55;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  resize: none;
+  background-color: #d3d3d3;
+}
+
+.submit-btn {
+  background-color: #2a364e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 2rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 4rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #1a2538;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+    <div class="home-icons">
+        <button class="home-icon" id="menu-open"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <div class="top-right-flex">
+            <a class="home-icon" href="https://impartial-intermediate-quesadilla.glitch.me/"><i
+                    class="fa fa-camera home-icon" aria-hidden="true"></i></a>
+            <button class="home-icon" id="search-open"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <div class="home-container">
+        <h1>Suggestions</h1>
+        <button class="suggestion">Nicol Hall</button>
+        <button class="suggestion">Adnan Kassar School Of Business</button>
+        <button class="suggestion">Sage Hall</button>
+        <button class="suggestion">Cafeteria</button>
+    </div>
+
+    <div id="menu" class="menu">
+        <i style="padding-bottom: 4rem;"></i>
+        <button id="menu-close" class="close-menu"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <a href="account.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
+        <a href="faq.html"><i class="fa fa-comments-o" aria-hidden="true"></i> F.A.Q</a>
+        <a href="contact.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Contact</a>
+        <a href="feedback.html"><i class="fa fa-star" aria-hidden="true"></i> Feedback</a>
+    </div>
+
+
+    <div id="search-container" class="search-container">
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search for a location...">
+            <i class="fa fa-close" id="search-close" style="cursor: pointer;"></i>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+</body>
+
+</html>
