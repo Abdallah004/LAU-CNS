@@ -1,30 +1,36 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
-
-// Fetch Firebase config from Netlify function
 const fetchFirebaseConfig = async () => {
   try {
-    const response = await fetch('/.netlify/functions/firebase-config'); // Call the Netlify function
-    const firebaseConfig = await response.json(); // Parse the JSON response
+    const response = await fetch('/.netlify/functions/firebase-config');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Firebase config: ${response.statusText}`);
+    }
+    const firebaseConfig = await response.json();
+    console.log("Fetched Firebase Config:", firebaseConfig); // Log the fetched config
     return firebaseConfig;
   } catch (error) {
-    console.error("Failed to fetch Firebase config:", error);
-    throw new Error("Could not load Firebase configuration");
+    console.error("Error fetching Firebase config:", error);
+    throw error;
   }
 };
 
-// Initialize Firebase after fetching the config
-fetchFirebaseConfig().then((config) => {
-  const app = initializeApp(config);
-  const auth = getAuth(app);
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const firebaseConfig = await fetchFirebaseConfig();
+    console.log("Initializing Firebase with Config:", firebaseConfig); // Log initialization
+    const app = initializeApp(firebaseConfig); // Ensure config is passed correctly
+    const auth = getAuth(app); // Ensure auth is initialized after Firebase is set up
 
-  // Redirect unauthenticated users
-  onAuthStateChanged(auth, (user) => {
-    if (!user || !user.emailVerified) {
-      window.location.href = "login.html"; // Redirect to login page
-    } else {
-      console.log(`User is logged in: ${user.email}`);
-    }
-  });
+    // Redirect unauthenticated users
+    onAuthStateChanged(auth, (user) => {
+      if (!user || !user.emailVerified) {
+        console.log("No authenticated user. Redirecting to login.");
+        window.location.href = "login.html";
+      } else {
+        console.log(`User is logged in: ${user.email}`);
+      }
+    });
+  } catch (error) {
+    console.error("Error during Firebase initialization:", error);
+  }
 });
 
