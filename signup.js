@@ -53,11 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
       await sendEmailVerification(user);
       message.textContent = "Sign-up successful! A verification email has been sent. Please verify your email before logging in.";
       console.log("Verification email sent to:", user.email);
+      // Show the resend button and disable it for 1 minute
+      showResendButton();
+
     } catch (error) {
-      message.textContent = `Error: ${error.message}`;
+      message.textContent = `${error} Try resending verification.`;
       console.error("Error creating user:", error);
+      showResendButtonNoTimeout();
     }
   });
+
+  function showResendButton() {
+    resendEmailButton.style.display = "block"; // Make the button visible
+    disableButtonFor(resendEmailButton, 60);  // Disable it for 60 seconds
+  }
+
+  function showResendButtonNoTimeout() {
+    resendEmailButton.style.display = "block";
+    disableButtonFor(resendEmailButton, 0); // Make the button visible
+  }
 
   // Log-in functionality
   const logInForm = document.getElementById("logInForm");
@@ -80,13 +94,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       loginMessage.textContent = "Log-in successful! Welcome back.";
+      document.location.href = "home.html"
       console.log("User logged in:", user);
     } catch (error) {
-      loginMessage.textContent = `Error: ${error.message}`;
+      loginMessage.textContent = `Error: ${error}`;
       console.error("Error logging in:", error);
     }
   });
 });
+function disableButtonFor(button, seconds) {
+  let remainingTime = seconds; // Initialize countdown time
+  button.disabled = true; // Disable the button
+  button.style.cursor = "not-allowed"; // Show the disabled cursor
+  button.textContent = `Resend Verification Code (${remainingTime}s)`; // Set initial countdown text
+
+  // Update the countdown every second
+  const countdown = setInterval(() => {
+    remainingTime--; // Decrement remaining time
+    button.textContent = `Resend Verification Code (${remainingTime}s)`; // Update button text
+
+    if (remainingTime <= 0) {
+      clearInterval(countdown); // Stop the countdown
+      button.disabled = false; // Re-enable the button
+      button.style.cursor = ""; // Reset the cursor style
+      button.textContent = "Resend Verification Code"; // Reset button text
+    }
+  }, 1000); // Run every second
+}
 
 
 const resendEmailButton = document.getElementById("resendEmail");
@@ -94,21 +128,39 @@ resendEmailButton.addEventListener("click", async () => {
   // Access the current user from Firebase Auth
   const user = auth.currentUser;
 
-  if (user && !user.emailVerified) {
-    try {
-      // Resend the verification email
-      await sendEmailVerification(user);
-      alert("Verification email has been resent!");
+  if (user) {
+    // Reload the user to get the latest emailVerified status
+    await user.reload();
 
-      // Reload the user to update the email verification status
-      await user.reload();
-      console.log("Email verified:", user.emailVerified);
-    } catch (error) {
-      console.error("Error resending verification email:", error);
+    if (user.emailVerified) {
+      message.textContent = "Your email is already verified. No need to resend the verification email you can close signup and login easily."
+    } else {
+      try {
+        // Resend the verification email
+        message.textContent = "Resending verification email...";
+        await sendEmailVerification(user);
+        message.textContent = "Verification email resent!";
+        disableButtonFor(resendEmailButton, 60);
+      } catch (error) {
+        console.error("Error resending verification email:", error);
+      }
     }
-  } else if (!user) {
-    alert("No user is currently signed in.");
   } else {
-    alert("Your email is already verified.");
+    alert("No user is currently signed in.");
   }
 });
+
+
+const removeSignupBtn = document.getElementById("removeSignup");
+const openSignupBtn = document.getElementById("openSignup");
+const signUpDiv = document.getElementById("signUpDiv");
+const logInDiv = document.getElementById("logInDiv");
+removeSignupBtn.addEventListener("click", function(){
+  signUpDiv.style.display = "none";
+  logInDiv.style.display = "block";
+})
+
+openSignupBtn.addEventListener("click", function(){
+  signUpDiv.style.display = "block";
+  logInDiv.style.display = "none";
+})
