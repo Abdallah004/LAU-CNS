@@ -9,3 +9,5 @@ export const fetchFirebaseConfig = async () => {
     throw new Error("Could not load Firebase configuration");
   }
 };
+
+
