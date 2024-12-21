@@ -1,0 +1,346 @@
+
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    z-index: 1;
+}
+
+.office_container {
+    border: 1px solid #1c2120;
+    width: 90%;
+    max-width: 25rem;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+.office_container_title {
+    text-align: center;
+}
+
+.office_container_semi_title {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.available {
+    color: lime;
+    background-color: rgba(0, 255, 0, 0.2);
+    padding: .6rem;
+    border-radius: 5px;
+}
+
+.unavailable {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.2);
+    padding: .6rem;
+    border-radius: 5px;
+}
+
+.office_container p {
+    margin-top: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: left;
+}
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+}
+th {
+    background-color: #f4f4f4;
+}
+
+#editModal {
+    background-color: white;
+    position: sticky;
+    width: 90%;
+    height: auto;
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#daysContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid #1c2120;
+    border-bottom: 1px solid #1c2120;
+}
+
+#daysContainer button {
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #1c2120;
+    outline: none;
+    cursor: pointer;
+    color: #1c2120;
+    background-color: white;
+    margin: 0.5rem;
+}
+
+#daysContainer button.selected {
+    background-color: #1c2120;
+    color: white;
+}
+
+#saveBtn {
+    background-color: #1c2120;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 90%;
+    max-width: 300px;
+    margin: 1rem auto;
+}
+.unselectedFa {
+    background-color: rgb(137, 137, 137);
+    color: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.booleanCheck {
+    display: flex;
+    width: 90%;
+    max-width: 300px;
+    justify-content: space-around;
+    margin: 1rem auto;
+    align-items: center;
+}
+
+#timeInputs div {
+    display: flex;
+    width: 90%;
+    max-width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+#timeInputs div input {
+    border-radius: 5px;
+    border: 1px solid #1c2120;
+    padding: 1rem;
+    width: 100%;
+    max-width: 150px;
+}
+
+#editModal label {
+    font-weight: bold;
+}
+
+.otherInput {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 300px;
+    margin: 1rem auto;
+    align-items: flex-start;
+}
+
+.otherInput input, .otherInput select {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #1c2120;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+
+    #daysContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #daysContainer button {
+        width: 80%;
+        margin: 0.5rem 0;
+    }
+
+    .booleanCheck {
+        width: 100%;
+        max-width: none;
+    }
+
+    #saveBtn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .office_container {
+        font-size: 1rem;
+    }
+
+    #editModal {
+        /* padding: 0.5rem; */
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .otherInput{
+        width: 40%;
+    }
+
+    .otherInput input{
+        width: 85%;
+    }
+
+    #daysContainer button {
+        font-size: 0.9rem;
+    }
+
+    #saveBtn {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+
+
+#back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #1c2120;
+    font-size: 2rem;
+    margin: .7rem;
+  }
+
+
+
+#editBtn{
+    background-color: #1c2120;
+    color: white;
+    padding: 1.2rem;
+    margin: 2rem auto;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .close{
+    position: absolute;
+    color: #1c2120;
+    top: 0;
+    right: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    margin: 1rem;
+    cursor: pointer;
+  }
+  
+
+  .officeSearch{
+    width: 80%;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #1c2120;
+    margin-left: 10%;
+  }
+
+  /* Loading screen styling */
+#loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9); /* White semi-transparent background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Keep it above all other content */
+}
+
+/* Loader animation */
+.loader {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #1c2120; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Tick Animation Container */
+.tick-animation-container {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+  }
+  
+  /* Tick Animation Icon */
+  .tick-animation {
+    font-size: 5rem;
+    color: limegreen;
+    animation: popIn 0.5s ease forwards;
+  }
+  
+  /* Pop-in animation for tick */
+  @keyframes popIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    80% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

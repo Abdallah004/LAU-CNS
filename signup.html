@@ -11,8 +11,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
     <!-- Firebase Database -->
     <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js"></script>
-    <script type="module" src="./signup.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="auth-redirect.js"></script>
+    <script type="module" src="signup.js" defer></script>
     <link rel="stylesheet" href="login.css">
 
 </head>
@@ -54,7 +55,7 @@
             <input type="password" id="password" placeholder="Enter your password" required />
             <input type="password" id="confirm_password" placeholder="Confirm your password" required />
             <p id="message"></p>
-            <button type="submit">Sign Up</button>
+            <button id="finalSignUpBtn" type="submit">Sign Up</button>
         </form>
         <button style="display: none;" id="resendEmail" disabled>Resend Verification Email</button>
         <button id="removeSignup"><i class="fa fa-times" aria-hidden="true"></i>

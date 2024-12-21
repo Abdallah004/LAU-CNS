@@ -299,3 +299,16 @@ button:disabled {
   background-color: transparent;
   text-decoration: underline;
 }
+
+.logout{
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #1c2120;
+  color: white;
+  outline: none;
+  width: 100%;
+  margin-top: 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
