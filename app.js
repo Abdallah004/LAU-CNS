@@ -194,18 +194,13 @@ searchResults.addEventListener("click", async (event) => {
 });
 
 // Handle clicks on suggestion buttons
-document.addEventListener("click", (event) => {
-  if (event.target.classList.contains("result")) {
-    const buildingId = event.target.getAttribute("data-read");
-    const level = event.target.getAttribute("data-read-lvl");
-
-    if (!arr[0] || arr[0] === "x") {
-      arr[0] = `${buildingId} - Floor ${level}`;
-      console.log(`Start Location Set: ${arr[0]}`);
-    } else if (!arr[1] || arr[1] === "y") {
-      arr[1] = `${buildingId} - Floor ${level}`;
-      console.log(`Destination Location Set: ${arr[1]}`);
-    }
+document.addEventListener("click", async (event) => {
+  const clickedElement = event.target;
+  if (clickedElement.classList.contains("suggestion")) {
+    dataDivTitle.innerHTML = event.target.innerHTML;
+    const buildingId = clickedElement.getAttribute("data-read");
+    const buildingIdLvl = clickedElement.getAttribute("data-read-lvl");
+    await handleBuildingClick(buildingId, buildingIdLvl);
   }
 });
 
@@ -323,7 +318,7 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
   }
 
   const navigateFromData = document.getElementById("navigateFromData");
-  
+
   // Replace the button to remove all previous event listeners
   const newNavigateFromData = navigateFromData.cloneNode(true);
   navigateFromData.parentNode.replaceChild(
@@ -332,7 +327,18 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
   );
 
   // Add the event listener to the new button
-  navigateFromData.addEventListener("click", sendPathRequest);;
+  newNavigateFromData.addEventListener("click", function () {
+    arr[0] =
+      buildingData.Name +
+      " - Floor " +
+      document.getElementById("levelDropdown").value;
+    // console.log(
+    //   buildingData.Name +
+    //     " - Floor " +
+    //     document.getElementById("levelDropdown").value
+    // );
+    currentLocationDiv.style.display = "inline";
+  });
 }
 function createSlideshow(imgLinks) {
   if (!imgLinks || imgLinks.length === 0) {
@@ -476,44 +482,4 @@ detailsBtn.addEventListener("click", function () {
 const toOfficeBtn = document.getElementById("toOfficeBtn");
 toOfficeBtn.addEventListener("click", function () {
   window.location.href = "offices.html";
-
-  /**
- * Sends the `arr` array to the PHP backend and processes the response.
- */
-const sendPathRequest = async () => {
-  try {
-    // Validate input
-    if (arr[0] === "x" || arr[1] === "y") {
-      alert("Please select valid start and destination locations.");
-      return;
-    }
-
-    // Send request to PHP backend
-    const response = await fetch('https://your-server.com/pathfinder.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ arr }), // Send `arr` array as JSON
-    });
-
-    const result = await response.json();
-
-    // Handle the PHP response
-    if (result.error) {
-      console.error('Error:', result.error);
-      alert(result.error);
-    } else {
-      console.log('Path:', result.path);
-      console.log('Total Distance:', result.total_distance);
-
-      // Display the result to the user
-      alert(`Shortest Path: ${result.path.join(' -> ')}\nTotal Distance: ${result.total_distance}`);
-    }
-  } catch (error) {
-    console.error('Request failed:', error);
-    alert('An error occurred while fetching the path.');
-  }
-};
-
 });
