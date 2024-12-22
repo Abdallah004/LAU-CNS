@@ -268,7 +268,7 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
   }
 
   if (buildingData.reserveLink) {
-    htmlContent += `<strong>Reserve: </strong><a class="reserve-link" href = ${buildingData.reserveLink}> Click here to reserve!</a><br><br>`;
+    htmlContent += `<strong>Reserve Study Room: </strong><a class="reserve-link" href = ${buildingData.reserveLink}> Click here to reserve!</a><br><br>`;
   }
 
   if (buildingData.FL && buildingData.LL) {
