@@ -140,6 +140,9 @@ renderResults([]);
 
 closeDataBtn.addEventListener("click", function () {
   dataDiv.style.display = "none";
+  if(document.getElementById("iframeDetails")){
+    document.getElementById("iframeDetails").style.display = "none";
+  }
 });
 
 // async function handleBuildingClick(buildingId) {
@@ -295,18 +298,39 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
     if (levelHtml && preselectedLvl != "undefined") {
       levelHtml.innerHTML = preselectedLvl
         ? `<br><br><strong>Level:</strong> ${preselectedLvl}`
-        : "No Level Selected";
+        : "";
     } else {
       console.error("Failed to find #level-html in DOM");
     }
   }, 0);
 
   if (buildingData.DOF) {
-    htmlContent += `<iframe class="DOF-iframe" src="${buildingData.DOF}" width="640" height="480"
+    htmlContent += `<iframe id="iframeDetails" class="DOF-iframe" src="${buildingData.DOF}" width="640" height="480"
         allow="autoplay"></iframe>`;
   }
 
+  
   dataDiv.innerHTML = htmlContent;
+
+  
+const iframe = document.getElementById("iframeDetails");
+detailsBtn.addEventListener("click", () => {
+  if (iframe.style.display === "none" || iframe.style.display === "") {
+      iframe.style.display = "block";
+      arrowIcon.classList.remove("fa-arrow-down");
+      arrowIcon.classList.add("fa-arrow-up");
+  } else {
+      iframe.style.display = "none";
+      arrowIcon.classList.remove("fa-arrow-up");
+      arrowIcon.classList.add("fa-arrow-down");
+  }
+});
+
+const toOfficeBtn = document.getElementById("toOfficeBtn");
+toOfficeBtn.addEventListener("click", function () {
+  window.location.href = "offices.html";
+});
+
 
   // Optional: Add an event listener to the dropdown
   const levelDropdown = document.getElementById("levelDropdown");
@@ -463,23 +487,21 @@ currentLocationResults.addEventListener("click", async (event) => {
 });
 const detailsBtn = document.getElementById("detailsBtn");
 const buildingDetails = document.getElementById("buildingDetails");
-detailsBtn.addEventListener("click", function () {
-  // Check if the details are currently displayed
-  if (
-    buildingDetails.style.display === "none" ||
-    buildingDetails.style.display === ""
-  ) {
-    // Show the details
-    detailsBtn.innerHTML = `Details <i class="fa fa-arrow-up" aria-hidden="true"></i>`;
-    buildingDetails.style.display = "inline";
-  } else {
-    // Hide the details
-    detailsBtn.innerHTML = `Details <i class="fa fa-arrow-down" aria-hidden="true"></i>`;
-    buildingDetails.style.display = "none";
-  }
-});
 
-const toOfficeBtn = document.getElementById("toOfficeBtn");
-toOfficeBtn.addEventListener("click", function () {
-  window.location.href = "offices.html";
-});
+const arrowIcon = document.getElementById("arrowIcon");
+// detailsBtn.addEventListener("click", function () {
+//   // Check if the details are currently displayed
+//   if (
+//     buildingDetails.style.display === "none" ||
+//     buildingDetails.style.display === ""
+//   ) {
+//     // Show the details
+//     detailsBtn.innerHTML = `Details <i class="fa fa-arrow-up" aria-hidden="true"></i>`;
+//     buildingDetails.style.display = "inline";
+//   } else {
+//     // Hide the details
+//     detailsBtn.innerHTML = `Details <i class="fa fa-arrow-down" aria-hidden="true"></i>`;
+//     buildingDetails.style.display = "none";
+//   }
+// });
+
