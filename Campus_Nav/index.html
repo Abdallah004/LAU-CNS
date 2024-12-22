@@ -24,27 +24,15 @@
             border-radius: 5px;
         }
         #controls select,
-        #controls button,
-        #controls input {
+        #controls button {
             margin-bottom: 5px;
             display: block;
-        }
-        #indoorText {
-            margin-top: 10px;
-            display: none;
-            background: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <div id="controls">
-        <label><input type="radio" name="navigationType" value="outdoor" checked> Outdoor</label>
-        <label><input type="radio" name="navigationType" value="indoor"> Indoor</label>
-
         <select id="startSelect">
             <option value="">Select Start</option>
         </select>
@@ -54,10 +42,6 @@
         </select>
         <button id="findPathBtn">Find Path</button>
         <div id="user_message"></div>
-    </div>
-
-    <div id="indoorText">
-        <p id="indoorInstructions"></p>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

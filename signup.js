@@ -1,9 +1,10 @@
-import { auth, database } from "./firebase-config.js";
+import { auth, db} from "./netlify/functions/firebase-config.js";
 import {
   signOut,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 
 var password = document.getElementById("password"),
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       message.textContent = "You must use an @lau.edu email address.";
       return;
     }
+
 
     try {
       const userCredential = await createUserWithEmailAndPassword(

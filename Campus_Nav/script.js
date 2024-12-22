@@ -295,7 +295,7 @@ const GEOMETRY_DATA = {
     [-290, 329],
     [-298, 338],
     [-316, 337],
-    [-302, 303],
+   
     [NODES["Node 7"].y, NODES["Node 7"].x],
   ],
   "Node 8-Node 7": [
@@ -374,7 +374,6 @@ const GEOMETRY_DATA = {
   ],
   "Node 9-Node 1": [
     [NODES["Node 9"].y, NODES["Node 9"].x],
-    [-413, 403],
     [-416, 357],
     [-420, 368],
     [-426, 376],
@@ -390,6 +389,134 @@ const GEOMETRY_DATA = {
     [-515, 432],
     [NODES["Node 1"].y, NODES["Node 1"].x],
   ],
+  "cafeteria-Node 6": [
+    [NODES["cafeteria"].y, NODES["cafeteria"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [NODES["Node 6"].y, NODES["Node 6"].x],
+  ],
+  "Nicole Hall-Node 6": [
+    [NODES["Nicole Hall"].y, NODES["Nicole Hall"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [NODES["Node 6"].y, NODES["Node 6"].x],
+  ],
+  "Wadad Khoury student center-Node 6": [
+    [NODES["Wadad Khoury student center"].y, NODES["Wadad Khoury student center"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [NODES["Node 6"].y, NODES["Node 6"].x],
+  ],
+  "cafeteria-Sage Hall": [
+    [NODES["cafeteria"].y, NODES["cafeteria"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [-236, 407],
+    [-245, 429],
+    [-251, 455],
+    [-265, 495],
+    [-273, 492],
+    [-284, 490],
+    [NODES["Sage Hall"].y, NODES["Sage Hall"].x],
+  ],
+  "Nicole Hall-Sage Hall": [
+    [NODES["Nicole Hall"].y, NODES["Nicole Hall"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [-236, 407],
+    [-245, 429],
+    [-251, 455],
+    [-265, 495],
+    [-273, 492],
+    [-284, 490],
+    [NODES["Sage Hall"].y, NODES["Sage Hall"].x],
+  ],
+  "Wadad Khoury student center-Sage Hall": [
+    [NODES["Wadad Khoury student center"].y, NODES["Wadad Khoury student center"].x],
+    [-212, 322],
+    [-209, 344],
+    [-214, 369],
+    [-224, 386],
+    [-236, 407],
+    [-245, 429],
+    [-251, 455],
+    [-265, 495],
+    [-273, 492],
+    [-284, 490],
+    [NODES["Sage Hall"].y, NODES["Sage Hall"].x],
+  ],
+  "cafeteria-Node 8": [
+    [NODES["cafeteria"].y, NODES["cafeteria"].x],
+    [-210, 318],
+    [-211, 325],
+    [-218, 327],
+    [-234, 326],
+    [-250, 324],
+    [-280, 323],
+    [-286, 321],
+    [-300, 304],
+    [NODES["Node 8"].y, NODES["Node 8"].x],
+  ],
+  "Nicole Hall-Node 8": [
+    [NODES["Nicole Hall"].y, NODES["Nicole Hall"].x],
+    [-210, 318],
+    [-211, 325],
+    [-218, 327],
+    [-234, 326],
+    [-250, 324],
+    [-280, 323],
+    [-286, 321],
+    [-300, 304],
+    [NODES["Node 8"].y, NODES["Node 8"].x],
+  ],
+  "Wadad Khoury student center-Node 8": [
+    [NODES["Wadad Khoury student center"].y, NODES["Wadad Khoury student center"].x],
+    [-210, 318],
+    [-211, 325],
+    [-218, 327],
+    [-234, 326],
+    [-250, 324],
+    [-280, 323],
+    [-286, 321],
+    [-300, 304],
+    [NODES["Node 8"].y, NODES["Node 8"].x],
+  ],
+  "Lower Gate-Node 2": [
+    [NODES["Lower Gate"].y, NODES["Lower Gate"].x],
+    [-592, 471],
+    [-586, 464],
+    [-579, 456],
+    [-572, 454],
+    [-562, 454],
+    [-534, 463],
+    [-511, 469],
+    [-501, 472],
+    [NODES["Node 2"].y, NODES["Node 2"].x],
+  ],
+  "Node 1-Irwin Hall": [
+    [NODES["Node 1"].y, NODES["Node 1"].x],
+    [-554, 424],
+    [-558, 429],
+    [-564, 432],
+    [-569, 434],
+    [-574, 434],
+    [-567, 386],
+    [-580, 381],
+
+    [NODES["Irwin Hall"].y, NODES["Irwin Hall"].x],
+  ],
+
+
 };
 
 const GRAPH = {};
@@ -530,6 +657,7 @@ addEdge("Lower Gate", "Irwin Hall");
 addEdge("Irwin Hall", "University Service");
 addEdge("Irwin Hall", "Tennis Playground");
 addEdge("Node 1", "Node 10");
+addEdge("Node 1", "Irwin Hall")
 addEdge("Shanon Hall", "Node 2");
 addEdge("Node 2", "Node 3");
 addEdge("Node 2", "Node 10");
@@ -540,6 +668,7 @@ addEdge("Node 5", "library");
 addEdge("Node 5", "AKSOB");
 addEdge("Node 5", "Middle Gate");
 addEdge("Node 5", "Orme Gray");
+addEdge("Fountain Area","Orme Gray")
 addEdge("Node 5", "Fountain Area");
 addEdge("library", "AKSOB");
 addEdge("Fountain Area", "Node 11");
@@ -565,6 +694,16 @@ addEdge("Safadi Area", "Safadi");
 addEdge("Wadad Khoury student center", "cafeteria");
 addEdge("cafeteria", "Nicole Hall");
 addEdge("Upper gate", "Node 7");
+addEdge("cafeteria","Node 6")
+addEdge("Nicole Hall","Sage Hall")
+addEdge("cafeteria","Sage Hall")
+addEdge("Wadad Khoury student center","Sage Hall")
+addEdge("Nicole Hall","Node 8")
+addEdge("cafeteria","Node 8")
+addEdge("Wadad Khoury student center","Node 8")
+addEdge("Lower Gate", "Node 2")
+
+
 
 const findPathBtn = document.getElementById("findPathBtn");
 const user_message = document.getElementById("user_message");
@@ -587,9 +726,14 @@ findPathBtn.addEventListener("click", () => {
 
   const path = aStar(start, end);
   if (path) {
-    user_message.textContent = `Path found: ${path.join(" -> ")}`;
-
+    const poiOnly = path.filter((nodeName) => NODES[nodeName].type === "poi");
+  
+    const poiNames = poiOnly.map((nodeName) => NODES[nodeName].name);
+  
+    user_message.textContent = `Path found: ${poiNames.join(" -> ")}`;
+  
     drawDetailedPath(path);
+  
   } else {
     user_message.textContent = "No path found between the selected points.";
   }

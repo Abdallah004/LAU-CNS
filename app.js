@@ -1,4 +1,4 @@
-import { db } from "./firebase-config.js"; // Firestore instance
+import { db } from "./netlify/functions/firebase-config.js"; // Firestore instance
 import {
   doc,
   getDoc,

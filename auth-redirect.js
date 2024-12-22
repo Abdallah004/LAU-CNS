@@ -1,4 +1,4 @@
-import { auth } from './firebase-config.js';
+import { auth } from './netlify/functions/firebase-config.js';
 import { onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 
 // Monitor authentication state

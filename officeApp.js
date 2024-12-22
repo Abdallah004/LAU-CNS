@@ -1,4 +1,4 @@
-import { auth, db } from "./firebase-config.js";
+import { auth, db } from "./netlify/functions/firebase-config.js";
 import {
   collection,
   getDocs,
