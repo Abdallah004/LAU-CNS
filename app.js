@@ -580,7 +580,7 @@ currentLocationResults.addEventListener("click", async (event) => {
     // Update the array with the current location
     arr[1] = `${integration}`;
     // console.log(integration);
-    location.href = `index.html?from=${arr[0]}&to=${arr[1]}`;
+    location.href = `map.html?from=${arr[0]}&to=${arr[1]}`;
 
     // Display the selected current location in the input field
     currentLocationInput.value = clickedElement.textContent;
