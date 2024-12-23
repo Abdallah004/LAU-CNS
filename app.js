@@ -166,7 +166,7 @@ const locations = [
     integration: "Wadad Khoury school center",
   },
   { name: "Safadi Fine Arts", id: "safadi", integration: "Safadi" },
-  { name: "Upper Gate", id: "upper-gate", integration: "Upper Gate" },
+  { name: "Upper Gate", id: "upper-gate", integration: "Upper gate" },
   {
     name: "University Services",
     id: "university-services",

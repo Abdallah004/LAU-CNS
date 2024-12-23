@@ -190,6 +190,12 @@ html, body{
 }
 
 
+.allWhite{
+  color: white !important;
+}
+.allWhite:visited{
+  color: white !important;
+}
 .close{
   position: absolute;
   color: #1c2120;
