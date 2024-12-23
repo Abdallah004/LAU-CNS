@@ -257,23 +257,6 @@ closeDataBtn.addEventListener("click", function () {
   }
 });
 
-// async function handleBuildingClick(buildingId) {
-//     dataDiv.style.display = "inline";
-
-//     console.log(`Fetching data for: ${buildingId}`);
-
-//     // Fetch the building data once
-//     const buildingData = await fetchBuildingData(buildingId);
-//     if (!buildingData) {
-//         console.error("No data available for this building.");
-//         return;
-//     }
-
-//     // Use the fetched data
-//     createSlideshow(buildingData.imgs); // Pass imgs array for slideshow
-//     displayBuildingData(buildingData); // Pass the whole object for info display
-// }
-
 async function handleBuildingClick(buildingId, lvl = null) {
   dataDiv.style.display = "inline";
 
@@ -447,23 +430,14 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
 
   const navigateFromData = document.getElementById("navigateFromData");
 
-  // Replace the button to remove all previous event listeners
   const newNavigateFromData = navigateFromData.cloneNode(true);
   navigateFromData.parentNode.replaceChild(
     newNavigateFromData,
     navigateFromData
   );
 
-  // Add the event listener to the new button
   newNavigateFromData.addEventListener("click", function () {
     arr[0] = buildingData.integration;
-    console.log(arr);
-
-    // console.log(
-    //   buildingData.Name +
-    //     " - Floor " +
-    //     document.getElementById("levelDropdown").value
-    // );
     currentLocationDiv.style.display = "inline";
   });
 }
@@ -475,12 +449,10 @@ function createSlideshow(imgLinks) {
 
   const imgElement = document.getElementById("slideshow-image");
 
-  // Clear any previous slideshow interval
   if (slideshowInterval) {
     clearInterval(slideshowInterval);
   }
 
-  // Reset the slideshow state
   imgElement.src = ""; // Clear the current image
   imgElement.style.opacity = 0;
 
@@ -541,27 +513,6 @@ currentLocationClose.addEventListener("click", () => {
   currentLocationInput.value = "";
 });
 
-// // Handle selecting a location from the search results
-// currentLocationResults.addEventListener("click", async (event) => {
-//   const clickedElement = event.target;
-
-//   if (clickedElement.classList.contains("current-location-result")) {
-//     const buildingId = clickedElement.getAttribute("data-read");
-//     const buildingIdLvl = clickedElement.getAttribute("data-read-lvl");
-//     arr[1] = `Current Location Selected: ${buildingId}, Level: ${
-//       buildingIdLvl || buildingData.FL
-//     }`;
-
-//     // Display the selected current location in the input field
-//     currentLocationInput.value = clickedElement.textContent;
-//     console.log(arr);
-
-//     // Close search results
-//     currentLocationResults.innerHTML = "";
-//     currentLocationDiv.style.display = "none";
-//   }
-// });
-
 currentLocationResults.addEventListener("click", async (event) => {
   const clickedElement = event.target;
 
@@ -594,21 +545,6 @@ const detailsBtn = document.getElementById("detailsBtn");
 const buildingDetails = document.getElementById("buildingDetails");
 
 const arrowIcon = document.getElementById("arrowIcon");
-// detailsBtn.addEventListener("click", function () {
-//   // Check if the details are currently displayed
-//   if (
-//     buildingDetails.style.display === "none" ||
-//     buildingDetails.style.display === ""
-//   ) {
-//     // Show the details
-//     detailsBtn.innerHTML = `Details <i class="fa fa-arrow-up" aria-hidden="true"></i>`;
-//     buildingDetails.style.display = "inline";
-//   } else {
-//     // Hide the details
-//     detailsBtn.innerHTML = `Details <i class="fa fa-arrow-down" aria-hidden="true"></i>`;
-//     buildingDetails.style.display = "none";
-//   }
-// });
 
 const toOfficeBtn = document.getElementById("toOfficeBtn");
 toOfficeBtn.addEventListener("click", function () {

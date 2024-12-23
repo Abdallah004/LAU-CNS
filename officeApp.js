@@ -330,11 +330,11 @@ auth.onAuthStateChanged(async (user) => {
     const createBtn = document.getElementById("createBtn");
 
     try {
-      // Reference the Firestore document using the email as the document ID
       const docRef = doc(db, "offices", email);
       const docSnap = await getDoc(docRef);
 
-      if (email.endsWith("@lau.edu.lb") || email == "karim.tello@lau.edu") {
+      // OLD: if (email.endsWith("@lau.edu.lb") || email == "karim.tello@lau.edu") {
+      if (email.endsWith("@lau.edu.lb")) {
         if (docSnap.exists()) {
           editBtn.style.display = "block";
           createBtn.style.display = "none";
@@ -346,22 +346,6 @@ auth.onAuthStateChanged(async (user) => {
         editBtn.style.display = "none";
         createBtn.style.display = "none";
       }
-
-      // if (docSnap.exists()) {
-      //   console.log(`User ${email} exists in the "offices" collection.`);
-      //   if (email.endsWith("@lau.edu")) {
-      //     // Show edit button for professors
-      //     editBtn.style.display = "block";
-      //     createBtn.style.display = "block";
-      //   } else {
-      //     // Hide edit button for non-professors
-      //     editBtn.style.display = "none";
-      //     createBtn.style.display = "none";
-      //   }
-      // } else {
-      //   editBtn.style.display = "none";
-      //   createBtn.style.display = "block";
-      // }
     } catch (error) {
       console.error("Error checking Firestore document:", error);
       editBtn.style.display = "none";
@@ -396,30 +380,6 @@ import {
   doc,
   getDoc,
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
-
-// async function fetchProfessorData() {
-//   const user = auth.currentUser;
-//   const email = user.email;
-//   const docRef = doc(db, "offices", email);
-//   const docSnap = await getDoc(docRef);
-
-//   if (docSnap.exists()) {
-//     const data = docSnap.data();
-//     document.getElementById("buildingDropdown").value = data.building;
-//     document.getElementById("roomInput").value = data.room;
-//     document.getElementById("inOfficeCheckbox").checked = data.inOffice;
-//     document.getElementById("availableCheckbox").checked = data.available;
-
-//     // Populate days and times
-//     Object.entries(data.DNT).forEach(([day, time]) => {
-//       const dayButton = document.querySelector(`button[data-day="${day}"]`);
-//       if (dayButton) {
-//         dayButton.classList.add("selected"); // Highlight button
-//         addTimeInput(day, time); // Add time input
-//       }
-//     });
-//   }
-// }
 
 async function fetchProfessorData() {
   const user = auth.currentUser;
@@ -517,42 +477,6 @@ document.getElementById("daysContainer").addEventListener("click", (e) => {
 });
 
 import { updateDoc } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
-
-// document.getElementById("saveBtn").addEventListener("click", async () => {
-//   const user = auth.currentUser;
-//   const email = user.email;
-
-//   const building = document.getElementById("buildingDropdown").value;
-//   const room = document.getElementById("roomInput").value;
-//   const inOffice = document.getElementById("inOfficeCheckbox").checked;
-//   const available = document.getElementById("availableCheckbox").checked;
-
-//   // Gather day and time data
-//   const days = {};
-//   document.querySelectorAll("#timeInputs input").forEach((input) => {
-//     const day = input.dataset.day;
-//     const time = input.value;
-//     days[day] = time;
-//   });
-
-//   // Call this function when the page loads
-
-//   // Update Firestore document
-//   try {
-//     await updateDoc(doc(db, "offices", email), {
-//       building,
-//       room,
-//       inOffice,
-//       available,
-//       DNT: days,
-//     });
-//     alert("Office hours updated successfully!");
-//     closeModal();
-//   } catch (error) {
-//     console.error("Error updating office hours:", error);
-//     alert("Failed to update office hours.");
-//   }
-// });
 
 document.getElementById("inOfficeYes").addEventListener("click", () => {
   document.getElementById("inOfficeYes").classList.remove("unselectedFa");
