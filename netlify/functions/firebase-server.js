@@ -15,11 +15,11 @@ if (!admin.apps.length) {
   });
 }
 
-const db = admin.firestore(); // or admin.database() for Realtime Database
+const db = admin.firestore(); // Use admin.database() if you're using Realtime Database
 
 exports.handler = async (event, context) => {
   try {
-    // Example: Fetch data from Firestore
+    // Replace 'your-collection' with the actual collection name you want to access
     const snapshot = await db.collection('your-collection').get();
     const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
