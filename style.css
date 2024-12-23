@@ -1,0 +1,345 @@
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#iframeDetails{
+  display: none;
+}
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-icon{
+    padding: 0;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    color: #2a364e;
+    font-size: 3rem; 
+    cursor: pointer;
+    margin: .5rem;
+  }
+
+  /* #search-open{
+    position: absolute;
+    right: 0;
+  } */
+
+  .top-right-flex{
+    position: absolute;
+    display: flex;
+    right: 0;
+    color: black;
+  }
+
+  #menu-open{
+    position: absolute;
+    left: 0;
+  }
+  .home-container h1{
+    padding-bottom: 1rem;
+  }
+  .home-container{
+    display: flex;
+    margin-top: 10rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-icons{
+    position: relative;
+    border: 1px solid transparent;
+  }
+
+  .suggestion, .offices-btn-home{
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background-color: #aeb3bc;
+    color: #4d4c4c;
+    padding: 1rem;
+    margin: 1rem;
+    width: 20rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .suggestion:hover{
+    transform: scale(1.03);
+    transition: all .2s;
+  }
+
+  .menu{
+    background-color: #29364e;
+    height: 100%;
+    position: fixed;
+    color: white;
+    top: 0;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    overflow-x: hidden;
+    transition: 0.3s;
+    width: 0;
+    z-index: 1;
+  }
+
+  .menu a{
+    margin: 1rem;
+    text-decoration: none;
+    transition: 0.1s;
+  }
+  a:visited{
+    color: white;
+    text-decoration: none;
+  }
+
+
+  .close-menu{
+    padding: none;
+    outline: none;
+    border: none;
+    width: min-content;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 1rem;
+    color: white;
+    padding: 0;
+    background-color: transparent;
+  }
+
+
+
+
+
+
+
+
+
+.search-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem;
+    color: #4d4c4c;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.search-bar i {
+    margin: 0 0.5rem;
+    color: #4d4c4c;
+}
+
+.search-results {
+    background-color: #29364e;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.result,.current-location-result {
+    padding: 1rem;
+    background-color: #848a98;
+    margin: 0.5rem;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.result:hover,.current-location-result:hover {
+    background-color: #4a5666;
+}
+
+.data-div{
+  position: absolute;
+  top: 0;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 1rem;
+  overflow-y: scroll;
+  display: none;
+}
+
+
+.close{
+  position: absolute;
+  color: #1c2120;
+  top: 0;
+  right: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  font-size: 2rem;
+  background-color: transparent;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+#slideshow-container {
+  margin-top: 4rem;
+  width: 80%;
+  max-height: calc(80vw / (16 / 9));
+  margin-left: 10%;
+  /* aspect-ratio: 16 / 9; Ensures the container maintains a consistent aspect ratio */
+  overflow: hidden; /* Hides any image overflow */
+  position: relative;
+}
+
+#slideshow-image {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border-radius: 10px;
+  width: 100%; /* Ensures the image fills the container's width */
+  height: 100%; /* Ensures the image fills the container's height */
+  object-fit: contain; /* Preserve the entire image without cropping or stretching */
+}
+
+
+#data-info-div{
+  /* border: 1px solid red; */
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+
+.navigateFromData{
+  background-color: #1c2120;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: white;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+.reserve-link, .reserve-link:visited{
+  color: #1c2120 !important;
+  text-decoration: underline;
+}
+
+
+.dest-level{
+  color:#1c2120;
+}
+
+.DOF-iframe {
+  display: none;
+  margin-top: 20px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+
+#data-div-title{
+  text-align: center;
+}
+
+.currentLocationDiv{
+  display: none;
+  /* width: 80%; */
+  /* left: 10%; */
+  /* height: 80%; */
+  /* top: 10%; */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  text-align: center;
+  position: fixed;
+  -webkit-box-shadow: 0px 0px 55px -18px rgba(28,33,32,1);
+-moz-box-shadow: 0px 0px 55px -18px rgba(28,33,32,1);
+box-shadow: 0px 0px 55px -18px rgba(28,33,32,1);
+}
+
+
+.search-results-current-location{
+  background-color: white;
+  overflow: hidden;
+  overflow-y: auto;
+  height: fit-content;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+
+.currentLocationDiv input{
+  border-bottom: 1px solid #1c2120;
+}
+
+#buildingDetails{
+  width: 80%;
+  display: none;
+  margin-left: 10%;
+}
+
+.detailsBtn{
+    background-color: #4a5666;
+    outline: none;
+    border: none;
+    padding: .5rem;
+    color: white;
+    /* width: 20%; */
+    margin-left: 10%;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 10rem;
+}
+
+.ndfHFb-c4YZDc-Wrql6b{
+  background-color: red;
+  padding: 12rem;
+}
+
+
+
+.offices-btn-home{
+  background-color: #1c2120;
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+.offices-btn-home:hover{
+  transform: scale(1.03);
+  transition: all .2s;
+}

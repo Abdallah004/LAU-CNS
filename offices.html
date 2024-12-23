@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Hours</title>
+    <link rel="stylesheet" href="officeStyle.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+    <!-- Firebase Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js"></script>
+    <script type="module" defer src="officeApp.js"></script>
+    <script type="module" src="auth-redirect.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input type="text" class="officeSearch" id="searchInput" placeholder="Search by Name" />
+
+    <!-- Edit Button -->
+    <button id="editBtn" style="display: none;">Edit Office Hours</button>
+    <button id="createBtn" style="display: none;">Create Office</button>
+
+    <!-- Modal -->
+    <div id="editModal" style="display: none;">
+        <h2>Edit Office Hours</h2>
+        <label class="otherInput">
+            Building:
+            <select id="buildingDropdown">
+                <option value="" disabled selected>Select a building</option>
+            </select>
+        </label>
+        <br>
+        <label class="otherInput">
+            Room:
+            <input type="text" id="roomInput" />
+        </label>
+        <div id="daysContainer">
+            <button data-day="Monday">Monday</button>
+            <button data-day="Tuesday">Tuesday</button>
+            <button data-day="Wednesday">Wednesday</button>
+            <button data-day="Thursday">Thursday</button>
+            <button data-day="Friday">Friday</button>
+        </div>
+        <div id="timeInputs"></div>
+        <!-- <label>
+            In Office:
+            <input type="checkbox" id="inOfficeCheckbox" />
+        </label><br>
+        <label>
+            Available:
+            <input type="checkbox" id="availableCheckbox" />
+        </label><br> -->
+        <label class="booleanCheck">
+            In Office:
+            <i class="fa fa-check available inOfficeBtn" id="inOfficeYes" data-value="true"></i>
+            <i class="fa fa-times unavailable inOfficeBtn unselectedFa" id="inOfficeNo" data-value="false"></i>
+        </label>
+        <br>
+        <label class="booleanCheck">
+            Available:
+            <i class="fa fa-check available availableBtn" id="availableYes" data-value="true"></i>
+            <i class="fa fa-times unavailable availableBtn unselectedFa" id="availableNo" data-value="false"></i>
+        </label>
+        <br>
+        <button id="saveBtn">Save</button>
+        <i class="fa fa-close close" id="editClose" style="cursor: pointer;"></i>
+    </div>
+
+
+
+    <!-- <div id="editDetailsButtonContainer">
+        <button id="editDetailsButton" style="display: none;">Edit Details</button>
+    </div> -->
+
+    <div id="officesContainer">
+    </div>
+
+
+    <a id="back" href="home.html"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+
+    <div id="loadingScreen">
+        <div class="loader"></div>
+        <p>Loading, please wait...</p>
+    </div>
+
+    <!-- The rest of your content -->
+    <div id="mainContent" style="display: none;">
+        <!-- Your main content goes here -->
+    </div>
+
+
+    <div class="tick-animation-container" id="tickAnimationContainer">
+        <i class="fa fa-check-circle tick-animation" aria-hidden="true"></i>
+    </div>
+
+
+</body>
+
+</html>

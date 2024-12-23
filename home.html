@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" defer src="app.js"></script>
+    <script type="module" src="auth-redirect.js" defer></script>
+</head>
+
+<body>
+    <div class="home-icons">
+        <button class="home-icon" id="menu-open"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <div class="top-right-flex">
+            <a class="home-icon" href="https://impartial-intermediate-quesadilla.glitch.me/"><i
+                    class="fa fa-camera home-icon" aria-hidden="true"></i></a>
+            <button class="home-icon" id="search-open"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <div class="home-container">
+        <h1>Suggestions</h1>
+        <button id="toOfficeBtn" class="offices-btn-home">Offices</button>
+        <button id="suggestion-btn" class="suggestion" data-read="nicol-hall">Nicol Hall</button>
+        <button id="suggestion-btn" class="suggestion" data-read="aksob">Adnan Kassar School Of Business</button>
+        <button id="suggestion-btn" class="suggestion" data-read="sage-hall">Sage Hall</button>
+        <button id="suggestion-btn" class="suggestion" data-read="library">Library</button>
+        <!-- <img src="https://drive.google.com/file/d/1Dug36I0RPCZ8NVZDyzgcaFrQSQ7b-QK6/preview" alt="" srcset=""> -->
+    </div>
+
+
+    <div id="menu" class="menu">
+        <i style="padding-bottom: 4rem;"></i>
+        <button id="menu-close" class="close-menu"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <a href="account.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
+        <a href="faq.html"><i class="fa fa-comments-o" aria-hidden="true"></i> F.A.Q</a>
+        <a href="contact.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Contact</a>
+        <a href="feedback.html"><i class="fa fa-star" aria-hidden="true"></i> Feedback</a>
+    </div>
+
+
+    <div id="search-container" class="search-container">
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search for a location...">
+            <i class="fa fa-close" id="search-close" style="cursor: pointer;"></i>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+
+    <div class="data-div" id="data-div">
+        <h1 id="data-div-title"></h1>
+        <div id="slideshow-container">
+            <img id="slideshow-image" src="" alt="Slideshow Image" style="width:100%; max-height: 400px;">
+        </div>
+
+        <div id="data-info-div"></div>
+
+        <button class="close" id="closeData"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button class="detailsBtn" id="detailsBtn">Details<i id="arrowIcon" class="fa fa-arrow-down"
+                aria-hidden="true"></i></button>
+        <!-- <img id="buildingDetails" src="https://drive.google.com/file/d/1Dug36I0RPCZ8NVZDyzgcaFrQSQ7b-QK6/preview"> -->
+        <!-- <img id="buildingDetails" src="https://drive.google.com/uc?id=1Dug36I0RPCZ8NVZDyzgcaFrQSQ7b"> -->
+        <button class="navigateFromData" id="navigateFromData">Take me There!</button>
+    </div>
+
+    <div class="currentLocationDiv" id="currentLocationDiv">
+        <h1>What is your current location?</h1>
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" id="currentLocationInput" placeholder="Search for a location...">
+            <i class="fa fa-close" id="currentLocationClose" style="cursor: pointer;"></i>
+        </div>
+        <div class="search-results-current-location" id="currentLocationResults"></div>
+    </div>
+</body>
+
+</html>
