@@ -1,3 +1,5 @@
+// src/account.js
+
 const logOutBtn = document.getElementById("logout");
 // const selectInput = document.getElementById("path-options");
 const currentPath = document.getElementById("current-path");
@@ -7,7 +9,7 @@ const currentPath = document.getElementById("current-path");
 // });
 
 import { auth, db } from "./firebase-config.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { signOut, onAuthStateChanged } from "firebase/auth"; // Import from 'firebase/auth'
 
 // Log Out Function
 logOutBtn.addEventListener("click", async () => {
@@ -39,7 +41,7 @@ function getNameFromEmail(email) {
   return formattedName; // Return the formatted name
 }
 
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (user) {
     const email = user.email;
     const name = getNameFromEmail(email);
@@ -62,7 +64,7 @@ function getUserOccupation(email) {
 }
 
 // Example usage with Firebase Authentication
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (user) {
     const email = user.email;
     const occupation = getUserOccupation(email);

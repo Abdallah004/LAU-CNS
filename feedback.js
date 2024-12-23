@@ -1,17 +1,8 @@
-// document.querySelectorAll('.star').forEach(star => {
-//     star.addEventListener('click', function () {
-//       const value = this.getAttribute('data-value');
-//       document.querySelectorAll('.star').forEach(s => {
-//         s.classList.toggle('filled', s.getAttribute('data-value') <= value);
-//       });
-//     });
-//   });
+// src/feedback.js
+
 // Import Firestore and Authentication from Firebase
-import { auth, db } from "./netlify/functions/firebase-config.js";
-import {
-  collection,
-  addDoc,
-} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+import { auth, db } from "./firebase-config.js";
+import { collection, addDoc } from "firebase/firestore"; // Import from 'firebase/firestore'
 
 document.addEventListener("DOMContentLoaded", () => {
   function showTickAnimation(duration = 2000) {
@@ -63,6 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get the authenticated user's email
     const user = auth.currentUser;
+
+    if (!user) {
+      alert("You must be logged in to submit feedback.");
+      return;
+    }
 
     const email = user.email;
 

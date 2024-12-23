@@ -1,9 +1,9 @@
 // src/firebase-config.js
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 
 // Firebase configuration from environment variables
 const firebaseConfig = {

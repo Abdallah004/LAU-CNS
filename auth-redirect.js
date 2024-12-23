@@ -1,5 +1,7 @@
-import { auth } from './netlify/functions/firebase-config.js';
-import { onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+// src/auth.js
+
+import { auth } from "./firebase-config.js"; // Correct import path
+import { onAuthStateChanged, sendEmailVerification } from "firebase/auth"; // Import from 'firebase/auth'
 
 // Monitor authentication state
 onAuthStateChanged(auth, (user) => {
@@ -8,9 +10,9 @@ onAuthStateChanged(auth, (user) => {
     if (!window.location.pathname.includes("signup.html")) {
       window.location.href = "signup.html";
     }
-  } else{
-    if (window.location.pathname.includes("signup.html")){
-      window.location.href = "home.html"
+  } else {
+    if (window.location.pathname.includes("signup.html")) {
+      window.location.href = "home.html";
     }
   }
 });

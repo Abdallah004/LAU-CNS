@@ -1,17 +1,19 @@
-import { auth, db} from "../firebase-config.js";
+// src/signup.js
+
+import { auth, db } from "./firebase-config.js"; // Correct import path
 import {
   signOut,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+} from "firebase/auth"; // Import from 'firebase/auth'
 
 var password = document.getElementById("password"),
   confirm_password = document.getElementById("confirm_password");
 
 function validatePassword() {
-  if (password.value != confirm_password.value) {
+  if (password.value !== confirm_password.value) {
     confirm_password.setCustomValidity("Passwords Don't Match");
   } else {
     confirm_password.setCustomValidity("");
@@ -29,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   signUpForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value.trim();
+    const passwordValue = document.getElementById("password").value;
 
     if (
       !email.toLowerCase().endsWith("@lau.edu") &&
@@ -40,12 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        passwordValue
       );
       const user = userCredential.user;
 
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       disableButton(finalSignUpBtn);
       showResendButton();
     } catch (error) {
-      message.textContent = `${error} Try resending verification, slow down and try again later.`;
+      message.textContent = `${error.message} Try resending verification, slow down and try again later.`;
       console.error("Error creating user:", error);
       showResendButtonNoTimeout();
     }
@@ -81,14 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   logInForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+    const email = document.getElementById("loginEmail").value.trim();
+    const passwordValue = document.getElementById("loginPassword").value;
 
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password
+        passwordValue
       );
       const user = userCredential.user;
 
@@ -106,30 +107,35 @@ document.addEventListener("DOMContentLoaded", () => {
       document.location.href = "home.html";
       console.log("User logged in:", user);
     } catch (error) {
-      loginMessage.textContent = `Error: ${error}`;
+      loginMessage.textContent = `Error: ${error.message}`;
       // alert(error)
       console.error("Error logging in:", error);
     }
   });
 });
+
 function disableButtonFor(button, seconds) {
   let remainingTime = seconds; // Initialize countdown time
   button.disabled = true; // Disable the button
   button.style.cursor = "not-allowed"; // Show the disabled cursor
-  button.textContent = `Resend Verification Code (${remainingTime}s)`; // Set initial countdown text
+  if (seconds > 0) {
+    button.textContent = `Resend Verification Code (${remainingTime}s)`; // Set initial countdown text
 
-  // Update the countdown every second
-  const countdown = setInterval(() => {
-    remainingTime--; // Decrement remaining time
-    button.textContent = `Resend Verification Code (${remainingTime}s)`; // Update button text
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+      remainingTime--; // Decrement remaining time
+      button.textContent = `Resend Verification Code (${remainingTime}s)`; // Update button text
 
-    if (remainingTime <= 0) {
-      clearInterval(countdown); // Stop the countdown
-      button.disabled = false; // Re-enable the button
-      button.style.cursor = ""; // Reset the cursor style
-      button.textContent = "Resend Verification Code"; // Reset button text
-    }
-  }, 1000); // Run every second
+      if (remainingTime <= 0) {
+        clearInterval(countdown); // Stop the countdown
+        button.disabled = false; // Re-enable the button
+        button.style.cursor = ""; // Reset the cursor style
+        button.textContent = "Resend Verification Code"; // Reset button text
+      }
+    }, 1000); // Run every second
+  } else {
+    button.textContent = "Resend Verification Code";
+  }
 }
 
 function disableButton(button) {
@@ -148,7 +154,7 @@ resendEmailButton.addEventListener("click", async () => {
 
     if (user.emailVerified) {
       message.textContent =
-        "Your email is already verified. No need to resend the verification email you can close signup and login easily.";
+        "Your email is already verified. No need to resend the verification email. You can close signup and log in easily.";
     } else {
       try {
         // Resend the verification email
@@ -158,10 +164,11 @@ resendEmailButton.addEventListener("click", async () => {
         disableButtonFor(resendEmailButton, 60);
       } catch (error) {
         console.error("Error resending verification email:", error);
+        alert("Failed to resend verification email. Please try again later.");
       }
     }
   } else {
-    alert("Unknown error please contact us or try again later.");
+    alert("Unknown error. Please contact us or try again later.");
   }
 });
 
@@ -169,6 +176,7 @@ const removeSignupBtn = document.getElementById("removeSignup");
 const openSignupBtn = document.getElementById("openSignup");
 const signUpDiv = document.getElementById("signUpDiv");
 const logInDiv = document.getElementById("logInDiv");
+
 removeSignupBtn.addEventListener("click", function () {
   signUpDiv.style.display = "none";
   logInDiv.style.display = "block";

@@ -1,8 +1,6 @@
 import { db } from "./firebase-config.js"; // Firestore instance
-import {
-  doc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+import { doc, getDoc } from "firebase/firestore";
+
 // Fetch data for a single building
 let slideshowInterval; // Keep track of the slideshow interval globally
 const suggestionBtn = document.getElementById("suggestion-btn");

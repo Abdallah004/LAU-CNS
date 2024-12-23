@@ -1,13 +1,12 @@
-import { auth, db } from "./firebase-config.js";
-import {
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+// src/officeApp.js
 
+import { auth, db } from "./firebase-config.js";
+import { collection, getDocs, doc, getDoc, updateDoc } from "firebase/firestore"; // Import from 'firebase/firestore'
+import { onAuthStateChanged } from "firebase/auth"; // Import from 'firebase/auth'
+
+// Function to show tick animation
 function showTickAnimation(duration = 2000) {
-  const tickAnimationContainer = document.getElementById(
-    "tickAnimationContainer"
-  );
+  const tickAnimationContainer = document.getElementById("tickAnimationContainer");
 
   // Ensure the tick animation container exists
   if (!tickAnimationContainer) {
@@ -90,11 +89,11 @@ async function renderOffices() {
       // Table header
       const thead = document.createElement("thead");
       thead.innerHTML = `
-                <tr>
-                    <th>Day</th>
-                    <th>Time</th>
-                </tr>
-            `;
+            <tr>
+                <th>Day</th>
+                <th>Time</th>
+            </tr>
+        `;
       table.appendChild(thead);
 
       // Table body with day-time data
@@ -108,9 +107,9 @@ async function renderOffices() {
           if (time) {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                        <td>${day}</td>
-                        <td>${time}</td>
-                    `;
+                    <td>${day}</td>
+                    <td>${time}</td>
+                `;
             tbody.appendChild(tr);
           }
         }
@@ -167,10 +166,8 @@ renderOffices();
 
 // ========
 
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
-
-// const auth = getAuth();
-auth.onAuthStateChanged((user) => {
+// Handle Authentication State
+onAuthStateChanged(auth, (user) => {
   if (user) {
     const email = user.email;
     const editBtn = document.getElementById("editBtn");
@@ -204,10 +201,7 @@ function closeModal() {
   document.getElementById("editModal").style.display = "none";
 }
 
-import {
-  doc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+import { doc, getDoc } from "firebase/firestore"; // Import from 'firebase/firestore'
 
 // async function fetchProfessorData() {
 //   const user = auth.currentUser;
@@ -295,12 +289,15 @@ document.getElementById("daysContainer").addEventListener("click", (e) => {
       addTimeInput(day);
     } else {
       // Remove time input for deselected day
-      document.querySelector(`input[data-day="${day}"]`).parentElement.remove();
+      const inputElement = document.querySelector(`input[data-day="${day}"]`);
+      if (inputElement) {
+        inputElement.parentElement.remove();
+      }
     }
   }
 });
 
-import { updateDoc } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+import { updateDoc } from "firebase/firestore"; // Import from 'firebase/firestore'
 
 // document.getElementById("saveBtn").addEventListener("click", async () => {
 //   const user = auth.currentUser;
@@ -396,7 +393,10 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     });
     showTickAnimation();
     closeModal();
-    editBtn.style.display = "block";
+    const editBtn = document.getElementById("editBtn");
+    if (editBtn) {
+      editBtn.style.display = "block";
+    }
   } catch (error) {
     console.error("Error updating office hours:", error);
     alert("Failed to update office hours.");
