@@ -195,3 +195,14 @@ textarea {
   }
 }
 
+
+
+.faq-container h3{
+  text-decoration: underline;
+}
+
+.faq-container h4{
+  padding-bottom: 1rem;
+  margin-top:2rem;
+  border-bottom: 1px solid white;
+}

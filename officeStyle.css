@@ -236,7 +236,7 @@ th {
 
 
 
-#editBtn{
+#editBtn, #createBtn{
     background-color: #1c2120;
     color: white;
     padding: 1.2rem;
@@ -344,3 +344,11 @@ th {
     }
   }
   
+
+  a{
+    color: #1c2120 !important;
+  }
+
+  a:visited{
+    color: #1c2120 !important;
+  }

@@ -170,9 +170,14 @@ text-align: center;
     width: 350px;
     margin-bottom: 0.5rem;
   }
+
+  #loginMessage{
+    display: none;
+  }
   
   form input,
-  form select {
+  form select,
+  #forgotPasswordContainer input{
     width: 100%;
     max-width: 350px;
     background-color: #f0f0f0;
@@ -192,7 +197,7 @@ text-align: center;
   }
 
   
-  form button, #resendEmail {
+  form button, #resendEmail, #forgotPasswordBtn {
     width: 100%;
     max-width: 350px;
     background-color: #1c2120;
@@ -285,7 +290,7 @@ button:disabled {
   cursor: pointer;
 }
 
-.signUpBtn{
+.signUpBtn, #forgotPasswordBtnFirst{
   padding: 0;
   outline: 0;
   border: 0;
@@ -295,10 +300,11 @@ button:disabled {
   color: #333;
   background-color: transparent;
 }
-.signUpBtn:hover{
+.signUpBtn:hover, #forgotPasswordBtnFirst:hover{
   background-color: transparent;
   text-decoration: underline;
 }
+
 
 .logout{
   padding: 1rem;
@@ -311,4 +317,51 @@ button:disabled {
   cursor: pointer;
   border: none;
   border-radius: 10px;
+}
+
+#forgotPasswordContainer{
+  height: 80%;
+  border-radius: 30px;
+  border-top-right-radius: 0px;
+  top: 10%;
+  left: 30%;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  font-size: 1.4rem;
+  display: none;
+  width: 40%;
+  position: absolute;
+}
+
+#forgotPasswordContainer input{
+  width: 50%;
+  padding: 1rem;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+#forgotPasswordBtn{
+  margin: 0 auto;
+}
+
+.close{
+  position: absolute;
+  color: #1c2120;
+  top: 0;
+  right: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  font-size: 2rem;
+  outline: none;
+  border: non;
+  background-color: transparent;
+  margin: 1rem;
+  cursor: pointer;
 }

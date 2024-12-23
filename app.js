@@ -92,7 +92,9 @@ const locations = [
   { name: "Orme Gray", id: "orme-gray" },
   { name: "Shannon Hall", id: "shannon-hall" },
   { name: "Lower Gate", id: "lower-gate" },
-  { name: "Gathering Area", id: "gathering-area" },
+  { name: "Gathering Area Middle", id: "gathering-area-middle" },
+  { name: "Gathering Area Upper", id: "gathering-area-upper" },
+  { name: "Gathering Area Lower", id: "gathering-area-lower" },
   { name: "Fountain", id: "fountain" },
   { name: "Middle Gate", id: "middle-gate" },
   { name: "Riyad Nassar Library", id: "library" },
@@ -140,7 +142,7 @@ renderResults([]);
 
 closeDataBtn.addEventListener("click", function () {
   dataDiv.style.display = "none";
-  if(document.getElementById("iframeDetails")){
+  if (document.getElementById("iframeDetails")) {
     document.getElementById("iframeDetails").style.display = "none";
   }
 });
@@ -309,28 +311,20 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
         allow="autoplay"></iframe>`;
   }
 
-  
   dataDiv.innerHTML = htmlContent;
 
-  
-const iframe = document.getElementById("iframeDetails");
-detailsBtn.addEventListener("click", () => {
-  if (iframe.style.display === "none" || iframe.style.display === "") {
+  const iframe = document.getElementById("iframeDetails");
+  detailsBtn.addEventListener("click", () => {
+    if (iframe.style.display === "none" || iframe.style.display === "") {
       iframe.style.display = "block";
       arrowIcon.classList.remove("fa-arrow-down");
       arrowIcon.classList.add("fa-arrow-up");
-  } else {
+    } else {
       iframe.style.display = "none";
       arrowIcon.classList.remove("fa-arrow-up");
       arrowIcon.classList.add("fa-arrow-down");
-  }
-});
-
-const toOfficeBtn = document.getElementById("toOfficeBtn");
-toOfficeBtn.addEventListener("click", function () {
-  window.location.href = "offices.html";
-});
-
+    }
+  });
 
   // Optional: Add an event listener to the dropdown
   const levelDropdown = document.getElementById("levelDropdown");
@@ -505,3 +499,25 @@ const arrowIcon = document.getElementById("arrowIcon");
 //   }
 // });
 
+const toOfficeBtn = document.getElementById("toOfficeBtn");
+toOfficeBtn.addEventListener("click", function () {
+  window.location.href = "offices.html";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const buildingName = urlParams.get("building");
+
+  if (buildingName) {
+    // Find the building ID from the locations array
+    const building = locations.find(
+      (location) => location.name.toLowerCase() === buildingName.toLowerCase()
+    );
+
+    if (building) {
+      handleBuildingClick(building.id, building.lvl || null); // Call with ID and level
+    } else {
+      console.error(`Building "${buildingName}" not found in locations.`);
+    }
+  }
+});

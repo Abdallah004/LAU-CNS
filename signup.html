@@ -43,13 +43,24 @@
             <label for="loginPassword">Password</label>
             <input type="password" id="loginPassword" placeholder="Enter your password" required />
             <p id="loginMessage"></p>
+            <button type="button" id="forgotPasswordBtnFirst">Forgot Password</button>
             <button type="submit">Log In</button>
         </form>
         <button class="signUpBtn" id="openSignup">Don't Have An Account? Sign Up</button>
     </div>
 
+
+    <div id="forgotPasswordContainer">
+        <h2 for="emailInput">Enter your email:</h2>
+        <input type="email" id="emailInput" placeholder="your.email@lau.edu" required />
+        <button id="forgotPasswordBtn">Forgot Password</button>
+        <p id="messagePassword"></p>
+        <button id="removeForgotPassword" class="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </div>
+
+
     <div class="signup-div" id="signUpDiv">
-        <h1>Sign Up</h1>
+        <h1>Sign Up</h1>ˆ
         <form id="signUpForm">
             <input type="email" id="email" placeholder="Enter your email" required />
             <input type="password" id="password" placeholder="Enter your password" required />

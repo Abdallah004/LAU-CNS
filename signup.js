@@ -1,4 +1,4 @@
-import { auth, database } from "./firebase-config.js";
+import { auth, database, sendPasswordResetEmail } from "./firebase-config.js";
 import {
   signOut,
   createUserWithEmailAndPassword,
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Check if the user's email is verified
       if (!user.emailVerified) {
+        loginMessage.style.display = "block";
         loginMessage.textContent =
           "Please verify your email before logging in.";
         console.warn("Email not verified for:", user.email);
@@ -101,10 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       loginMessage.textContent = "Log-in successful! Welcome back.";
+      loginMessage.style.display = "block";
       document.location.href = "home.html";
       console.log("User logged in:", user);
     } catch (error) {
       loginMessage.textContent = `Error: ${error}`;
+      loginMessage.style.display = "block";
       // alert(error)
       console.error("Error logging in:", error);
     }
@@ -174,5 +177,53 @@ removeSignupBtn.addEventListener("click", function () {
 
 openSignupBtn.addEventListener("click", function () {
   signUpDiv.style.display = "block";
+  logInDiv.style.display = "none";
+});
+
+document
+  .getElementById("forgotPasswordBtn")
+  .addEventListener("click", async () => {
+    const emailInput = document.getElementById("emailInput").value.trim();
+    const messagePassword = document.getElementById("messagePassword");
+
+    if (!emailInput) {
+      messagePassword.textContent = "Please enter your email.";
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, emailInput);
+      messagePassword.style.color = "green";
+      messagePassword.textContent =
+        "Password reset email sent! Check your inbox.";
+    } catch (error) {
+      console.error("Error sending password reset email:", error);
+      messagePassword.style.color = "red";
+
+      // Display appropriate error messagePasswords
+      if (error.code === "auth/user-not-found") {
+        messagePassword.textContent = "No user found with this email.";
+      } else if (error.code === "auth/invalid-email") {
+        messagePassword.textContent = "Invalid email address.";
+      } else {
+        messagePassword.textContent =
+          "Failed to send password reset email. Try again later.";
+      }
+    }
+  });
+
+const removeForgotPassword = document.getElementById("removeForgotPassword");
+const forgotPasswordBtn = document.getElementById("forgotPasswordBtnFirst");
+const forgotPasswordContainer = document.getElementById(
+  "forgotPasswordContainer"
+);
+
+removeForgotPassword.addEventListener("click", function () {
+  logInDiv.style.display = "block";
+  forgotPasswordContainer.style.display = "none";
+});
+
+forgotPasswordBtn.addEventListener("click", function () {
+  forgotPasswordContainer.style.display = "flex";
   logInDiv.style.display = "none";
 });
