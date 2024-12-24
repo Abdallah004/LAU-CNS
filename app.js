@@ -373,18 +373,18 @@ function displayBuildingData(buildingData, preselectedLvl = null) {
     const firstLevel = parseInt(buildingData.FL, 10);
     const lastLevel = parseInt(buildingData.LL, 10);
 
-    if (!isNaN(firstLevel) && !isNaN(lastLevel) && firstLevel <= lastLevel) {
-      htmlContent += `<strong class="dest-level">Destination Level: </strong>
-            <select id="levelDropdown">`;
+    // if (!isNaN(firstLevel) && !isNaN(lastLevel) && firstLevel <= lastLevel) {
+    //   htmlContent += `<strong class="dest-level">Destination Level: </strong>
+    //         <select id="levelDropdown">`;
 
-      // Generate dropdown options
-      for (let level = firstLevel; level <= lastLevel; level++) {
-        const selected = level === parseInt(preselectedLvl) ? "selected" : "";
-        htmlContent += `<option value="${level}" ${selected}>${level}</option>`;
-      }
+    //   // Generate dropdown options
+    //   for (let level = firstLevel; level <= lastLevel; level++) {
+    //     const selected = level === parseInt(preselectedLvl) ? "selected" : "";
+    //     htmlContent += `<option value="${level}" ${selected}>${level}</option>`;
+    //   }
 
-      htmlContent += `</select><br><br>`;
-    }
+    //   htmlContent += `</select><br><br>`;
+    // }
   }
 
   //   dataDiv.innerHTML = htmlContent; // Render to DOM
